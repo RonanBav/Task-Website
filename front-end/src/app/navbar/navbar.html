@@ -1,0 +1,26 @@
+<!-- working on navbar, not implemented yet! -->
+
+
+@if (isLoggedIn) {
+<nav class="navbar navbar-expand-sm navbar-dark bg-black bg-gradient sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="tasks">Tasks</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="tasks">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="tasks">Categories</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+}

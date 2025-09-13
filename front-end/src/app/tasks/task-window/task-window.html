@@ -1,0 +1,70 @@
+<div class="container py-5">
+  <div class="card shadow-sm bg-light">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4 text-gray">
+        {{title}}
+        <button class="btn btn-danger position-absolute top-0 end-0 mt-2 me-2" (click)="onClose()">X</button>
+      </h3>
+
+      <form (ngSubmit)="onSubmit(formRef)" #formRef="ngForm">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="title" class="form-label">Task Name</label>
+            <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="task.name"
+              #name="ngModel" placeholder="Enter task name" />
+            @if (formRef.touched && name.invalid) {
+            <label class="text-danger">Invalid Name</label>
+            }
+          </div>
+
+          <div class="col-md-6">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="task.description"
+              minlength="10" required #description="ngModel" placeholder="Enter description" />
+            @if (formRef.touched && description.invalid) {
+            <label class="text-danger">Not Enough Characters</label>
+            }
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="isCompleted" class="form-label">Is Completed</label>
+            <select class="form-select" id="isCompleted" name="isCompleted" [(ngModel)]="task.isCompleted">
+              <option [ngValue]="true">True</option>
+              <option [ngValue]="false">False</option>
+            </select>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <label for="date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" style="height: 50px;" id="date" name="date" [(ngModel)]="task.date "
+              #date="ngModel" (focus) = "onDatePicker($event)"/>
+
+            @if (formRef.touched && date.invalid) {
+            <label class="text-danger">Enter a Date</label>
+            }
+          </div>
+
+          <div class="col-md-4">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" [(ngModel)]="task.categoryId">
+              <option [ngValue]="1">IT</option>
+              <option [ngValue]="2">Physical</option>
+              <option [ngValue]="3">Mental</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary me-2">Save</button>
+
+          <button type="reset" class="btn btn-warning" [hidden]="isEditing">Reset</button>
+
+          <button (click)="onDelete()" [hidden]="!isEditing"
+            class="btn btn-danger position-absolute end-0 mt-2 me-2">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

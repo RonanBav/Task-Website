@@ -1,0 +1,36 @@
+body {
+    background-color: gray;
+}
+.paginator-wrapper {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #343a40; 
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.custom-dark-paginator {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+
+::ng-deep .mat-paginator {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+::ng-deep .mat-paginator .mat-button,
+::ng-deep .mat-paginator .mat-icon-button {
+  color: white !important;
+}
+
+::ng-deep .mat-paginator .mat-select-value {
+  color: white !important;
+}
+
+::ng-deep .mat-paginator .mat-form-field-underline {
+  background-color: white !important;
+}

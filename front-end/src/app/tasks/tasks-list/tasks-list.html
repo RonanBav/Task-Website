@@ -1,0 +1,52 @@
+
+<nav class="navbar navbar-dark bg-dark bg-gradient justify-content-end px-3 sticky-top">
+  <form class="d-flex align-items-center gap-2" (ngSubmit)="onSearch()">
+    <input class="form-control form-control-sm me-2" type="text" name="search" placeholder="Search"
+      [(ngModel)]="search" />
+
+   <button class="btn btn-outline-primary btn-sm w-50" type="submit">
+  Search
+</button>
+
+
+
+<button class="btn btn-outline-success btn-sm w-50" type="button" (click)="onOpenTask(0)">
+  Add Task
+</button>
+
+<button class="btn btn-outline-danger btn-sm w-50 float-start" (click) = "onLogout()"> Log out </button>
+
+  </form>
+</nav>
+
+
+
+
+
+
+<h1 class="display-6 text-center text-white bg-dark mb-0 fw-bold">
+  Tasks
+</h1>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+  <div class="list-group w-100" style="max-width: 600px; aspect-ratio: 3 / 4;">
+    @for (task of tasks; track $index) {
+    <a (click)="onOpenTask(task.id)" class="list-group-item list-group-item-action flex-column align-items-start mb-1">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{task.name}}</h5>
+        <small>Due on {{task.date}}</small>
+      </div>
+      <p class="mb-1">{{task.description}}</p>
+      <small>{{task.isCompleted | completePipe}}</small>
+    </a>
+    }
+  </div>
+</div>
+
+
+<div class="paginator-wrapper">
+  <mat-paginator [length]="count" [pageIndex]="paginationDTO.page" [pageSize]="paginationDTO.maxPerPage"
+    [pageSizeOptions]="[1, 5, 10]" (page)="onPageChange($event.pageIndex, $event.pageSize)"
+    class="custom-dark-paginator text-white">
+  </mat-paginator>
+</div>

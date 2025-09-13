@@ -1,0 +1,32 @@
+<div class="bg-dark bg-gradient text-white min-vh-100 d-flex justify-content-center align-items-center">
+
+
+  <form (ngSubmit)="onLogin()" #formRef="ngForm" class="p-4 rounded bg-secondary bg-gradient"
+    style="width: 100%; max-width: 400px;">
+    <h1 class="display-6 text-center text-white mb-4 fw-bold">
+      Log In
+    </h1>
+    <div class="mb-3">
+      <label for="Email" class="form-label">Email</label>
+      <input type="text" class="form-control" id="Email" name="Email" required [(ngModel)]="loginBody.email"
+        #name="ngModel" placeholder="Enter Email" />
+    </div>
+
+    <div class="mb-3">
+      <label for="Password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password" name="Password" required
+        [(ngModel)]="loginBody.password" #Password="ngModel" placeholder="Enter Password" />
+        @if (error) {
+          <div class = "text-danger"> {{error}}</div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary ">Login</button>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="" routerLink= "/register" class="text-info text-decoration-none">Don't have an account? Register here!</a>
+    </div>
+  </form>
+</div>
